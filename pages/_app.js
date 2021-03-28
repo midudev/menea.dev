@@ -17,15 +17,22 @@ const theme = extendTheme({
       letterSpacing: '-1%'
     },
     h3: {
-      fontSize: ['21px', '32px'],
+      fontSize: ['21px', '24px'],
       fontWeight: 'semibold',
       lineHeight: '110%',
       letterSpacing: '-1%'
     },
     small: {
+      color: '#aaa',
       fontSize: ['12px', '14px'],
-      fontWeight: 'regular',
+      fontWeight: '500',
       lineHeight: '110%',
+      letterSpacing: '-1%'
+    },
+    verySmall: {
+      color: '#444',
+      fontSize: ['8px', '12px'],
+      fontWeight: '500',
       letterSpacing: '-1%'
     }
   }

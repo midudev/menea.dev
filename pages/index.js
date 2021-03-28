@@ -1,11 +1,15 @@
+import { Fragment } from 'react'
+
 import { useUser } from '@auth0/nextjs-auth0'
 import { Box, VStack } from '@chakra-ui/layout'
-import { Button, Text } from '@chakra-ui/react'
+import { Divider } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-import Header from '../components/header/index.jsx'
-import { voteStory } from '../services/stories'
-import { useStories } from '../hooks/useStories'
+import Header from 'components/header/index.jsx'
+import { voteStory } from 'services/stories'
+import { useStories } from 'hooks/useStories'
+import StoryCard from 'components/story-card/index.jsx'
+import Footer from 'components/footer/index.jsx'
 
 export default function Home () {
   const {
@@ -35,33 +39,32 @@ export default function Home () {
         ))
   }
 
-  const getDomainFromUrl = (url) => {
-    const urlInstance = new URL(url)
-    return urlInstance.host
-  }
-
   if (userError) return <div>{userError.message}</div>
   if (storiesError) return <div>{storiesError.message}</div>
 
   return (
-    <Box maxW='960px' mx='auto'>
-      <Header />
-      {
+    <VStack justify='space-between' minHeight='100vh' w='100%'>
+      <Box maxW='960px' w='100%' mx='auto'>
+        <Header />
+        {
         isLoading
           ? <div>Loading...</div>
           : null
       }
-      <VStack spacing={4} align='stretch'>
-        {stories.map(story =>
-          <Box key={story.id} p='4' border='1px solid #eee' borderRadius='4px'>
-            <Text as='h2' textStyle='h3'>{story.title}</Text>
-            <Text as='h5' textStyle='small'>{getDomainFromUrl(story.url)}</Text>
-            <span>{story.votes}</span>
-            <Button onClick={createHandleClick(story.id)}>Vote</Button>
-            <Text as='time' textStyle='small'>{new Date(story.inserted_at).toUTCString()}</Text>
-          </Box>
-        )}
-      </VStack>
-    </Box>
+        <VStack spacing={4} align='stretch' w='100%'>
+          {stories.map(story =>
+            <Fragment key={story.id}>
+              <StoryCard
+                {...story}
+                insertedAt={story.inserted_at}
+                handleVote={createHandleClick}
+              />
+              <Divider />
+            </Fragment>
+          )}
+        </VStack>
+      </Box>
+      <Footer />
+    </VStack>
   )
 }

@@ -1,14 +1,12 @@
 import { useUser } from '@auth0/nextjs-auth0'
-import { Spacer, Flex } from '@chakra-ui/layout'
+import { Spacer, Flex, Text } from '@chakra-ui/layout'
 
 export default function Header () {
   const { user } = useUser()
 
   return (
-    <Flex align='center' as='header' h='64px'>
-      <h2>menea.dev</h2>
-
-      <Spacer />
+    <Flex justify='space-between' as='header' h='64px' p={4} w='100%'>
+      <Text as='h2' fontWeight='bold'> &lt;/&gt; menea.dev</Text>
 
       {user
         ? (

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getStories } from '../services/stories'
+import { getStories } from 'services/stories'
 
 export const useStories = () => {
   const [storiesError, setStoriesError] = useState(null)
