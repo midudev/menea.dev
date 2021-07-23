@@ -1,0 +1,33 @@
+{
+  "name": "nextjs-firebase-auth",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^1.0.14",
+    "@chakra-ui/react": "^1.6.5",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "algoliasearch": "4.10.3",
+    "firebase": "^8.6.8",
+    "firebase-admin": "^9.9.0",
+    "framer-motion": "^4.1.17",
+    "next": "11.0.1",
+    "next-firebase-auth": "0.13.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-firebaseui": "^5.0.2"
+  },
+  "devDependencies": {
+    "standard": "^16.0.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/standard/eslintrc.json"
+    ]
+  }
+}
